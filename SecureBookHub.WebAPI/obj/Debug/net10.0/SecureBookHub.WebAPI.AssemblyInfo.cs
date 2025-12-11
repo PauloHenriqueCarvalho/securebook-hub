@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecureBookHub.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+03c738a7600df4ecb714052553ba8e3e9c38a2b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecureBookHub.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecureBookHub.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

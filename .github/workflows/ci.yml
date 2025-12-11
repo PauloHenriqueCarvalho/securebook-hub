@@ -1,0 +1,62 @@
+name: CI com Build, Teste e SonarCloud
+
+# 1. ALTERAÇÃO CRÍTICA: Mudar "main" para "master"
+on:
+  push:
+    branches:
+      - master # <-- MUDAR PARA 'master'
+      - develop
+  pull_request:
+    branches:
+      - master # <-- MUDAR PARA 'master'
+      - develop
+      
+jobs:
+  build_test_and_scan:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_VERSION: '8.0.x' 
+      PROJECT_SLN: 'SecureBookHub.WebAPI.sln' # <-- 2. ALTERAÇÃO: Mude para o nome do seu arquivo .sln, se for diferente.
+      
+    steps:
+    - name: 1. Checkout do Código (Clonar)
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: 2. Configurar .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    # --- SonarCloud: Passo 3 - INÍCIO DA ANÁLISE ---
+    - name: 3. 🔍 SonarCloud Scan - Begin
+      uses: SonarSource/sonarcloud-github-action/dotnet-scanner@v2
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          /o:"${{ secrets.SONAR_ORGANIZATION }}"
+          /k:"7c31ea47ea1a262758be5d301eb5f684d659e7a0" # <-- 3. ALTERAÇÃO: SUBSTITUA PELA SUA PROJECT KEY
+          /d:sonar.host.url="https://sonarcloud.io"
+          /s:"${{ env.PROJECT_SLN }}"
+
+    - name: 4. 📦 Restaurar Dependências
+      run: dotnet restore ${{ env.PROJECT_SLN }}
+
+    - name: 5. 🛠️ Compilar o Projeto (Build)
+      run: dotnet build ${{ env.PROJECT_SLN }} --configuration Release --no-restore
+
+    - name: 6. ✅ Rodar Testes com Cobertura
+      run: dotnet test ${{ env.PROJECT_SLN }} --no-build --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="./TestResults/"
+
+    # --- SonarCloud: Passo 7 - FIM DA ANÁLISE (UPLOAD) ---
+    - name: 7. ⬆️ SonarCloud Scan - End
+      uses: SonarSource/sonarcloud-github-action/dotnet-scanner@v2
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          /d:sonar.coverageReportPaths="./TestResults/coverage.opencover.xml"
