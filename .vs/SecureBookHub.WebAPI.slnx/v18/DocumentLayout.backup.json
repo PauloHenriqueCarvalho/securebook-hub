@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\paulo\\source\\repos\\SecureBookHub.WebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{898503E1-3336-42FA-AC8B-DDD19ED8F455}|SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj|c:\\users\\paulo\\source\\repos\\securebookhub.webapi\\securebookhub.webapi\\visualstudio.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{898503E1-3336-42FA-AC8B-DDD19ED8F455}|SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj|solutionrelative:securebookhub.webapi\\visualstudio.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{898503E1-3336-42FA-AC8B-DDD19ED8F455}|SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj|c:\\users\\paulo\\source\\repos\\securebookhub.webapi\\securebookhub.webapi\\securebookhub.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{898503E1-3336-42FA-AC8B-DDD19ED8F455}|SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj|solutionrelative:securebookhub.webapi\\securebookhub.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "visualstudio.gitignore",
+              "DocumentMoniker": "C:\\Users\\paulo\\source\\repos\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI\\visualstudio.gitignore",
+              "RelativeDocumentMoniker": "SecureBookHub.WebAPI\\visualstudio.gitignore",
+              "ToolTip": "C:\\Users\\paulo\\source\\repos\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI\\visualstudio.gitignore",
+              "RelativeToolTip": "SecureBookHub.WebAPI\\visualstudio.gitignore",
+              "ViewState": "AgIAADwBAAAAAAAAAADwv0wBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-11T13:54:44.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SecureBookHub.WebAPI",
+              "DocumentMoniker": "C:\\Users\\paulo\\source\\repos\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj",
+              "RelativeDocumentMoniker": "SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj",
+              "ToolTip": "C:\\Users\\paulo\\source\\repos\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj",
+              "RelativeToolTip": "SecureBookHub.WebAPI\\SecureBookHub.WebAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-11T13:39:43.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
