@@ -17,7 +17,7 @@ jobs:
 
     env:
       DOTNET_VERSION: '8.0.x' 
-      PROJECT_SLN: 'SecureBookHub.WebAPI.sln' # <-- 2. ALTERAÇÃO: Mude para o nome do seu arquivo .sln, se for diferente.
+      PROJECT_SLN: 'SecureBookHub.WebAPI.slnx' # <-- 2. ALTERAÇÃO: Mude para o nome do seu arquivo .sln, se for diferente.
       
     steps:
     - name: 1. Checkout do Código (Clonar)
