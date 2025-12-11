@@ -1,29 +1,28 @@
 name: CI com Build, Teste e SonarCloud
 
-# 1. ALTERAÇÃO CRÍTICA: Mudar "main" para "master"
 on:
   push:
     branches:
-      - master # <-- MUDAR PARA 'master'
+      - master  # Sua branch principal
       - develop
   pull_request:
     branches:
-      - master # <-- MUDAR PARA 'master'
+      - master
       - develop
       
 jobs:
   build_test_and_scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Agente de execução padrão para maior compatibilidade
 
     env:
       DOTNET_VERSION: '8.0.x' 
-      PROJECT_SLN: 'SecureBookHub.WebAPI.slnx' # <-- 2. ALTERAÇÃO: Mude para o nome do seu arquivo .sln, se for diferente.
+      PROJECT_SLN: 'SecureBookHub.WebAPI.slnx' # CORRIGIDO: Nome da solution com 'x'
       
     steps:
     - name: 1. Checkout do Código (Clonar)
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 0 # Necessário para o SonarCloud analisar o histórico
 
     - name: 2. Configurar .NET
       uses: actions/setup-dotnet@v4
@@ -37,10 +36,10 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
-          /o:"${{ secrets.SONAR_ORGANIZATION }}"
-          /k:"7c31ea47ea1a262758be5d301eb5f684d659e7a0" # <-- 3. ALTERAÇÃO: SUBSTITUA PELA SUA PROJECT KEY
+          /o:"paulohenriquecarvalho" # Sua Organization Key
+          /k:"7c31ea47ea1a262758be5d301eb5f684d659e7a0" # Sua Project Key
           /d:sonar.host.url="https://sonarcloud.io"
-          /s:"${{ env.PROJECT_SLN }}"
+          /s:"${{ env.PROJECT_SLN }}" # Referência à Solution
 
     - name: 4. 📦 Restaurar Dependências
       run: dotnet restore ${{ env.PROJECT_SLN }}
@@ -49,6 +48,7 @@ jobs:
       run: dotnet build ${{ env.PROJECT_SLN }} --configuration Release --no-restore
 
     - name: 6. ✅ Rodar Testes com Cobertura
+      # Roda os testes e gera o relatório no formato OpenCover para o SonarCloud
       run: dotnet test ${{ env.PROJECT_SLN }} --no-build --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="./TestResults/"
 
     # --- SonarCloud: Passo 7 - FIM DA ANÁLISE (UPLOAD) ---
@@ -59,4 +59,4 @@ jobs:
       with:
         args: >
           /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-          /d:sonar.coverageReportPaths="./TestResults/coverage.opencover.xml"
+          /d:sonar.coverageReportPaths="./TestResults/coverage.opencover.xml" # Aponta para o relatório gerado no passo 6
